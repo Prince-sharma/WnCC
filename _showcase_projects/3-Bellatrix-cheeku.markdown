@@ -4,7 +4,7 @@ image: /images/bellatrix.jpg
 title: Bellatrix
 author: "Meet Udeshi"
 avatar: https://avatars3.githubusercontent.com/u/7384411?v=3&s=400
-github: https://github.com/nihal111
+github: https://github.com/udiboy1209
 repo: https://github.com/udiboy1209/bellatrix
 website: https://github.com/udiboy1209/bellatrix
 category:
@@ -13,7 +13,7 @@ category:
 weight: 2
 ---
 
-A simple personal assistant driven by text and voice with limitless possibilities of adding more features. Uses AIML (Artificial Intelligence Markup Language) for pattern matching and chatbot abilities along with a few python and shell scripts to carry out system processes. The repository resides [here]({{ page.repo }}).
+This is an augemented reality gaming platform. The game is projected on a screen and a camera records the user interaction with the screen. The repository resides [here]({{ page.repo }}).
 <style>
 .videowrapper {
     float: none;

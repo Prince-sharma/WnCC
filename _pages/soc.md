@@ -54,9 +54,9 @@ div.tab button.active {
 <!-- Banner -->
 <section id="banner" style="background-image:url({{ page.banner | prepend: site.baseurl }})">
     <div class="inner">
-        <h2>Seasons Of Code</h2>
+        <h2>Seasons Of Code 2018</h2>
         <p> An Initiative By <a href="https://www.wncc-iitb.org/">The Web and Coding Club, IIT Bombay</a><br/><br/>
-        Tentative Dates: <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=N3ZxOHNlNDFtcnY2bzFhNXJpZjVmbDk2MDMgYWJlZW45QG0&tmsrc=abeen9%40gmail.com">15th May - 15th July</a></p>
+        Tentative Dates: <a href="https://calendar.google.com/event?action=TEMPLATE&tmeid=N3ZxOHNlNDFtcnY2bzFhNXJpZjVmbDk2MDMgYWJlZW45QG0&tmsrc=abeen9%40gmail.com">16th May - 16th July</a></p>
         <ul class="actions">
             <li><a href="#one" class="button big special">Join The Force</a></li>
         </ul>
@@ -116,7 +116,7 @@ div.tab button.active {
 					<img class="icon major" src="{{ '/svg/light-siber-one.svg' | prepend: site.baseurl }}" />
 					<h3>Padawan</h3>
 					<p>The Force is strong with you. Train yourself to let go of everything you fear to lose. The Force will be with you always. Ready are you?</p><br>
-					<a target = "_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc5ZqQvIgxVK-Tf-uWEKcyCg2BrDM0Iu4QVj5RzoP6Y5TZtNA/viewform" class="button big special">Become a Padawan</a>
+					<a target = "_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScF3u5o_D-6G4E8-jl5ftqDN27tLpnAmR5ThE81OKrMHuFzuQ/viewform?usp=sf_link" class="button big special">Become a Padawan</a>
 				</section>
 			</div>
 			<div class="6u">
@@ -124,7 +124,7 @@ div.tab button.active {
 					<img class="icon major" src="{{ '/svg/light-siber.svg' | prepend: site.baseurl }}" />
 					<h3>Master</h3>
 					<p>I can feel you code. It gives you focus. It makes you stronger. Your focus determines your reality. Use the force and someday you will be the most powerful Jedi ever.</p>
-					<a target = "_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSd57osi_wuufUt9caLo5q3QFXNzjXBhcuaKtj2RTK5OG5JFfw/viewform" class="button big special">Become a Master</a>
+					<a target = "_blank" href="https://goo.gl/forms/1WXW4oSDwlCHD4313" class="button big special">Become a Master</a>
 				</section>
 			</div>
 		</div>
@@ -143,6 +143,51 @@ div.tab button.active {
   <button class="tablinks" onclick="openType(event, 'completed')">Completed Projects</button>
 </div>
 <br/>
+
+<div id="completed" class="tabcontent">
+<div class="container">
+<!-- the following line is optional to sort by weight -->
+		{% assign projects = site.soc_projects | sort:"weight"  %}
+            {% for project in site.soc_projects%}
+            {% if project.ribbon == "completed" %}
+            {% capture modulo %}{{ forloop.index0 | mod:3 }}{% endcapture %}
+            {% capture thecycle %}{% cycle '1', '2' ,'3' %}{% endcapture %}
+            <!-- Creating a new row after every three elements -->
+            {% if thecycle == '1' or forloop.first %}
+            	<div class="row">
+            {% endif %}
+				<div class="4u">
+					<section class="special">
+						<a href="{{ project.url | prepend: site.baseurl }}" class="image fit">
+                            <img src="{{ project.image | prepend: site.baseurl }}" alt="{{ project.title }}" />
+                            <!-- {% if page.ribbon != '' %} -->
+                            <div class = "ribbon {{project.ribbon}}"><span>{{project.ribbon}}</span></div>
+                            <!-- {% endif %} -->
+                        </a>
+                        <a href="{{ project.url | prepend: site.baseurl }}" class="image fit">
+						<h3>{{ project.title }}</h3>
+						</a>
+						<h4>-
+						{% for mentor in project.mentor%}
+				            {{ mentor }}&nbsp;
+			        	{% endfor %}</h4>
+						<h4>- {{ project.category }}</h4>
+						<p>{{ project.content | split:'<!--break-->' | first }}</p>
+						<ul class="actions">
+							<li><a href="{{ project.url | prepend: site.baseurl}}" class="button alt">Learn More</a></li>
+						</ul>
+					</section>
+				</div>
+			{% if thecycle == '3' or forloop.last %}
+    			</div>
+			{% endif %}
+			{% endif %}
+            {% endfor %}
+		<div style="text-align: center;">
+		<!-- <a href="#" class="button big special">View All Projects</a> -->
+		</div>
+	</div>
+</div>
 
 <div id="running" class="tabcontent">
 <div class="container">
@@ -187,50 +232,7 @@ div.tab button.active {
 		</div>
 	</div>
 </div>
-<div id="completed" class="tabcontent">
-<div class="container">
-<!-- the following line is optional to sort by weight -->
-		{% assign projects = site.soc_projects | sort:"weight"  %}
-            {% for project in site.soc_projects%}
-            {% if project.ribbon == "completed" %}
-            {% capture modulo %}{{ forloop.index0 | mod:3 }}{% endcapture %}
-            {% capture thecycle %}{% cycle '0', '1' ,'2' %}{% endcapture %}
-            <!-- Creating a new row after every three elements -->
-            {% if thecycle == '0' or forloop.first %}
-            	<div class="row">
-            {% endif %}
-				<div class="4u">
-					<section class="special">
-						<a href="{{ project.url | prepend: site.baseurl }}" class="image fit">
-                            <img src="{{ project.image | prepend: site.baseurl }}" alt="{{ project.title }}" />
-                            <!-- {% if page.ribbon != '' %} -->
-                            <div class = "ribbon {{project.ribbon}}"><span>{{project.ribbon}}</span></div>
-                            <!-- {% endif %} -->
-                        </a>
-                        <a href="{{ project.url | prepend: site.baseurl }}" class="image fit">
-						<h3>{{ project.title }}</h3>
-						</a>
-						<h4>-
-						{% for mentor in project.mentor%}
-				            {{ mentor }}&nbsp;
-			        	{% endfor %}</h4>
-						<h4>- {{ project.category }}</h4>
-						<p>{{ project.content | split:'<!--break-->' | first }}</p>
-						<ul class="actions">
-							<li><a href="{{ project.url | prepend: site.baseurl}}" class="button alt">Learn More</a></li>
-						</ul>
-					</section>
-				</div>
-			{% if thecycle == '2' or forloop.last %}
-    			</div>
-			{% endif %}
-			{% endif %}
-            {% endfor %}
-		<div style="text-align: center;">
-		<!-- <a href="#" class="button big special">View All Projects</a> -->
-		</div>
-	</div>
-</div>
+
 
 
 <script>
